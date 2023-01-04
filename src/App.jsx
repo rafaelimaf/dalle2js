@@ -1,32 +1,60 @@
-import React, { useState } from 'react'
-import { openai } from './openAi'
+import React, { useState } from 'react';
+import openai from './utils/openAi';
 
-function App () {
-  const [imageDescription, setImageDescription] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-
-  const saveImageDescription = ({ target }) => {
-    setImageDescription(target.value)
-  }
+function App() {
+  const [imageDescription, setImageDescription] = useState('');
+  const [imagesUrls, setImagesUrls] = useState([]);
+  const [hasFetch, setHasFetch] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const generateImage = async (description) => {
-    const response = await openai.createImage({
-      prompt: description,
-      n: 1,
-      size: '1024x1024'
-    })
+    setHasFetch(false);
+    setImagesUrls([]);
 
-    setImageUrl(response.data.data[0].url)
-  }
+    try {
+      const response = await openai.createImage({
+        prompt: description,
+        n: 10,
+        size: '1024x1024',
+      });
+      setImagesUrls(response.data.data);
+      setHasFetch(true);
+      setErrorMessage(false);
+    } catch (e) {
+      setErrorMessage('Não entendi o que você está buscando, poderia tentar descrever novamente? :/');
+      setHasFetch(true);
+    }
+  };
 
   return (
     <div>
-      <h2>Describe what you want to visualize</h2>
-      <input type="text" onChange={saveImageDescription} value={imageDescription}/>
-      <button type="button" onClick={() => generateImage(imageDescription)}>Generate</button>
-      <img src={imageUrl}/>
+      <h1>DALL-E 2 Javascript</h1>
+      {hasFetch ? (
+        <>
+          <h2>Descreva o que você gostaria de visualizar:</h2>
+          <input
+            type="text"
+            onChange={({ target }) => setImageDescription(target.value)}
+            value={imageDescription}
+          />
+          <button
+            type="submit"
+            onClick={() => generateImage(imageDescription)}
+          >
+            Generate
+          </button>
+          {errorMessage ? (
+            <p>{errorMessage}</p>
+          ) : null}
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+      {imagesUrls.map((img) => (
+        <img src={img.url} alt="" />
+      ))}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
