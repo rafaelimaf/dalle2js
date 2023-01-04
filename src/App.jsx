@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import openai from './utils/openAi';
+import errorHandler from './error/errorHandler';
 
 function App() {
   const [imageDescription, setImageDescription] = useState('');
@@ -21,7 +22,8 @@ function App() {
       setHasFetch(true);
       setErrorMessage(false);
     } catch (e) {
-      setErrorMessage('Não entendi o que você está buscando, poderia tentar descrever novamente? :/');
+      const err = errorHandler(e.message);
+      setErrorMessage(err);
       setHasFetch(true);
     }
   };
