@@ -1,7 +1,12 @@
 body {
- margin: 0; 
+  background-color: aliceblue;
+  margin: 0;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+a {
+  color: purple;
 }
