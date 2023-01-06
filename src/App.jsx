@@ -34,8 +34,7 @@ function App() {
       {hasFetch ? (
         <>
           <h2>Descreva o que você gostaria de visualizar:</h2>
-          <input
-            type="text"
+          <textarea
             onChange={({ target }) => setImageDescription(target.value)}
             value={imageDescription}
           />
