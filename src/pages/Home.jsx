@@ -5,7 +5,7 @@ import '../styles/pages/home.css';
 
 export default function Home() {
   return (
-    <div>
+    <div data-testid="home-page">
       <Header />
       <StarterSection />
     </div>
