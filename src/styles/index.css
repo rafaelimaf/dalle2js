@@ -10,3 +10,11 @@ html {
 a {
   color: purple;
 }
+
+::-webkit-scrollbar {
+  background-color: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+}
