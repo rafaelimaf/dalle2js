@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import openai from '../utils/openAi';
+import openai from '../api/openAi';
 import errorHandler from '../error/errorHandler';
 
 function Search() {
