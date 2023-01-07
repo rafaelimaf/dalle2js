@@ -1,17 +1,11 @@
-.before-start-container {
+.tutorial-section {
   align-items: center;
   display: flex;
   flex-direction: column;
   font-family: "Courier New", Courier, monospace;
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10vh;
-}
-
-hr {
-  margin: 5vh 0;
-  margin-left: 20%;
-  margin-right: 20%;
+  padding: 10vh 0 0;
 }
 
 .heading {
@@ -37,5 +31,11 @@ i::selection {
 .content-img {
   box-shadow: 0 22px 20px rgb(0 0 0 / 10%);
   margin: 5vh 0;
+  transition: 0.2s;
   width: 35vw;
+}
+
+.content-img:hover {
+  transition: 0.2s;
+  width: 40vw;
 }
