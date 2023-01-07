@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: 'Courier New' , 'Courier' , monospace;
+  font-family: "Courier New", Courier, monospace;
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 10vh;
@@ -25,13 +25,17 @@ hr {
   text-align: justify;
 }
 
-.heading::selection, .content::selection, a::selection, b::selection, i::selection {
+.heading::selection,
+.content::selection,
+a::selection,
+b::selection,
+i::selection {
   background-color: teal;
   color: white;
 }
 
 .content-img {
-  box-shadow: 0 22px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 22px 20px rgb(0 0 0 / 10%);
   margin: 5vh 0;
   width: 35vw;
 }
