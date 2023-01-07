@@ -3,7 +3,7 @@ import pricingImg from '../../assets/images/index';
 
 export default function StarterSection() {
   return (
-    <section id="getting-started" className="tutorial-section">
+    <section id="getting-started" className="content-section">
       <h2 className="heading">Antes de Começar</h2>
       <p className="content">
         Dall-E 2 é uma Inteligência Artificial que gera imagens a partir de uma
