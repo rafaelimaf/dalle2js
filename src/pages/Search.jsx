@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import openai from '../utils/openAi';
+import openai from '../api/openAi';
 import errorHandler from '../error/errorHandler';
 
 function Search() {
@@ -29,7 +29,7 @@ function Search() {
   };
 
   return (
-    <div>
+    <div data-testid="search-page">
       <h1>Search</h1>
       {hasFetch ? (
         <>

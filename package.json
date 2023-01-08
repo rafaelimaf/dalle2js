@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:coverage": "jest --coverage --silent"
+    "test": "react-scripts test --watchAll --verbose",
+    "test:coverage": "npm test -- --coverage --collectCoverageFrom='src/**/*jsx' --coveragePathIgnorePatterns='src/index.jsx'"
   },
   "eslintConfig": {
     "extends": [
@@ -27,9 +27,7 @@
     ]
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@jest/globals": "^29.3.1",
     "openai": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,6 +36,9 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.31.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -45,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^27.5.1",
     "stylelint": "^14.16.1",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-order": "^6.0.0"
