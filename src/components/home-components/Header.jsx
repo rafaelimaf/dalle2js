@@ -14,7 +14,10 @@ export default function Header() {
         className="header-btn"
         type="button"
         data-testid="header-getting-started-btn"
-        onClick={() => { window.location.hash = '#getting-started'; }}
+        onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: document.getElementById('getting-started').offsetTop });
+        }}
       >
         Descubra!
       </button>

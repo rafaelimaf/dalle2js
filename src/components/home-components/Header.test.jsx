@@ -1,6 +1,7 @@
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
+import 'jest';
 import App from '../../App';
 import '@testing-library/jest-dom';
 
@@ -19,7 +20,7 @@ describe('Testa o componente Header.jsx, verificando se', () => {
 
   it('o componente possui um título com a tag "h1" e um subtítulo com a tag h5', () => {
     const { getByTestId } = render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>,
     );
@@ -33,7 +34,7 @@ describe('Testa o componente Header.jsx, verificando se', () => {
 
   it('o componente possui um botão com o texto "Descubra!"', () => {
     const { getByTestId } = render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>,
     );
@@ -44,17 +45,21 @@ describe('Testa o componente Header.jsx, verificando se', () => {
     expect(buttonElement.textContent).toEqual('Descubra!');
   });
 
-  it('ao clicar no botão "Descubra!" a página é rola até a seção "Antes de Começar"', () => {
+  it('após clicar no botão "Descubra!" há uma rolagem na página', () => {
+    const scrollToMock = jest.fn();
+    jest.spyOn(window, 'scrollTo').mockImplementation(scrollToMock);
+
     const { getByTestId } = render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>,
     );
 
     const buttonElement = getByTestId('header-getting-started-btn');
+    const targetElement = document.getElementById('getting-started');
 
     fireEvent.click(buttonElement);
-
-    expect(window.location.hash).toBe('#getting-started');
+    expect(scrollToMock).toHaveBeenCalled();
+    expect(scrollToMock).toHaveBeenCalledWith({ top: targetElement.offsetTop });
   });
 });
