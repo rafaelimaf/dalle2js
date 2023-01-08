@@ -3,9 +3,9 @@ import pricingImg from '../../assets/images/index';
 
 export default function StarterSection() {
   return (
-    <section id="getting-started" className="content-section">
-      <h2 className="heading">Antes de Começar</h2>
-      <p className="content">
+    <section id="getting-started" className="content-section" data-testid="starter-section-component">
+      <h2 className="heading" data-testid="starter-section-component-heading">Antes de Começar</h2>
+      <p className="content" data-testid="starter-section-component-paragraph">
         Dall-E 2 é uma Inteligência Artificial que gera imagens a partir de uma
         descrição textual. Essa IA desenvolvida pela
         {' '}
@@ -34,7 +34,7 @@ export default function StarterSection() {
         e visualmente agradável. Além é claro de ser extremamente simples de realizar suas
         requisições e alterar seus parâmetros.
       </p>
-      <p className="content">
+      <p className="content" data-testid="starter-section-component-paragraph">
         A Dall-E API possui ainda muitos outros recursos, que futuramente serão implementados
         neste site. No entanto, atualmente, foi apenas implemento sua principal e mais famosa
         ferramenta: a geração de imagens baseada em descrição textual. Esse processo, até o momento,
@@ -46,8 +46,8 @@ export default function StarterSection() {
         gerada por você, visto que há um custo por imagem produzida em proporção também à
         resolução. Veja a tabela de preços abaixo:
       </p>
-      <img className="content-img" src={pricingImg} alt="" />
-      <p className="content">
+      <img className="content-img" src={pricingImg} alt="" data-testid="starter-section-component-img" />
+      <p className="content" data-testid="starter-section-component-paragraph">
         Mas não era possível utilizar a ferramenta de forma gratuita? Sim, e realmente é. Isso
         porque ao cadastrar sua conta, você recebe gratuitamente
         {' '}
